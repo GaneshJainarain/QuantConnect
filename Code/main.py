@@ -62,7 +62,9 @@ class EnergeticGreenCaterpillar(QCAlgorithm):
         #This bot is supposed to buy and hold SPY until SPY drops or rises a certain amount
         #After we stay in cash for one month until we buy and hold again
 
-        #To account fot the one month wait time we can use self.Time to access the current time and then check if its greater or equal to the next entry time
+        #To account for the one month wait time we can use self.Time to access the current time and then check if its greater or equal to the next entry time.
+
+
 
 
         if not self.Portfolio.Invested:
@@ -72,6 +74,8 @@ class EnergeticGreenCaterpillar(QCAlgorithm):
                 self.Log("BUY SPY @" + str(price))
                 self.entryPrice = price
         
+        #Exit Process
+        #10% below or above 
         elif self.entryPrice * 1.1 < price or self.entryPrice * 0.90 > price:
             self.Liquidate()
             self.Log("SELL SPY @" + str(price))
