@@ -36,7 +36,7 @@ class EnergeticGreenCaterpillar(QCAlgorithm):
         #Three custom helper variables
 
         #entryPrice will track the entry price of our SPY position
-        self.entryPrice
+        self.entryPrice = 0
 
         self.period = timedelta(31)
 
@@ -47,4 +47,32 @@ class EnergeticGreenCaterpillar(QCAlgorithm):
 
     #OnData method runs everytime we get new data
     def OnData(self, data):
-        pass
+        
+        #We need to check if the data already exists before anything
+        if not self.spy in data:
+            return
+
+        #Firstly we would want to save the current price of SPY
+        #directly indexing the data variable, this will return a trade bar object that we can use to find the last close price
+        price = data[self.spy].Close
+
+        #Implementing the trade logic
+        #Firstly we want to check if our bot is already invested
+
+        #This bot is supposed to buy and hold SPY until SPY drops or rises a certain amount
+        #After we stay in cash for one month until we buy and hold again
+
+        #To account fot the one month wait time we can use self.Time to access the current time and then check if its greater or equal to the next entry time
+
+
+        if not self.Portfolio.Invested:
+            if self.nextEntryTime <= self.Time:
+                self.SetHoldings(self.spy, 1)
+                # self.MarketOrder(self.spy, int(self.Portfolio.Cash / price) )
+                self.Log("BUY SPY @" + str(price))
+                self.entryPrice = price
+        
+        elif self.entryPrice * 1.1 < price or self.entryPrice * 0.90 > price:
+            self.Liquidate()
+            self.Log("SELL SPY @" + str(price))
+            self.nextEntryTime = self.Time + self.period
