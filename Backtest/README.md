@@ -1,5 +1,5 @@
-## Where the info for the backtest will live
+## Where the info for the backtest will live/
 
 
 #### Backtest
-![](/Users/richeyjay/Desktop/QuantConnect/Backtest/Backtest.jpg)
+![]('Backtest/images/Backtest.jpg')
