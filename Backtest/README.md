@@ -2,4 +2,4 @@
 
 
 #### Backtest
-![Backtest](/Users/richeyjay/Desktop/QuantConnect/Backtest/Backtest.jpg)
+![](/Users/richeyjay/Desktop/QuantConnect/Backtest/Backtest.jpg)
