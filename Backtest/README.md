@@ -1,5 +1,4 @@
-## Where the info for the backtest will live/
+## Where the info for the backtest will live
 
 
-#### Backtest
-![]('Backtest/images/Backtest.jpg')
+![[Block]('Backtest/images/Backtest.jpg')]
