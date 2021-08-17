@@ -64,9 +64,6 @@ class EnergeticGreenCaterpillar(QCAlgorithm):
 
         #To account for the one month wait time we can use self.Time to access the current time and then check if its greater or equal to the next entry time.
 
-
-
-
         if not self.Portfolio.Invested:
             if self.nextEntryTime <= self.Time:
                 self.SetHoldings(self.spy, 1)
